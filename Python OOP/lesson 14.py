@@ -30,7 +30,7 @@ def register_age(age1, age2):
     print('...')
     time.sleep(0.5)
     print('....')
-    print(f'Возраста {age1}, {age2} сохранён в базу данных')
+    print(f'Возраст {age1}, {age2} сохранён в базу данных')
 
 
 register_age(10, '14314124')
