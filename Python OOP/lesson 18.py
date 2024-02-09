@@ -23,6 +23,22 @@ class Products:
         if isinstance(other, int):
             return Products(self.products, self.bonuses + other)
 
+    def __sub__(self, other):
+        if isinstance(other, str):  # Check if the other is a product name
+            new_products = self.products.copy()
+            new_products.pop(other, None)  # Remove the product if it exists
+            return Products(new_products, self.bonuses)
+        elif isinstance(other, int):  # Check if the other is an integer (for bonus deduction)
+            return Products(self.products, self.bonuses - other)
+
+    def __rsub__(self, other):
+        if isinstance(other, str):  # Check if the other is a product name
+            new_products = self.products.copy()
+            new_products.pop(other, None)  # Remove the product if it exists
+            return Products(new_products, self.bonuses)
+        elif isinstance(other, int):  # Check if the other is an integer (for bonus deduction)
+            return Products(self.products, other - self.bonuses)
+
 
 products1 = Products({'Молоко': 3, 'Сыр': 5})
 print(f'Цена: {products1.get_products_price()}. {products1.products}')
@@ -34,7 +50,10 @@ products5 = 1 + products4
 products5 += 1
 print(f'Цена: {products5.get_products_price()}. {products5.products}')
 
-# ДЗ
-# 1. Реализовать логику для удаления продуктов из корзины
-# 2. Реализовать логику для списания(удаления) бонусов
-# (i) __sub__ и __rsub__
+
+products1 = Products({'Молоко': 3, 'Сыр': 5}, bonuses=2)
+products1 -= 'Молоко'  # Remove 'Молоко' from the cart
+print(f'Цена: {products1.get_products_price()}. {products1.products}')
+
+products1 -= 1  # Subtract 1 from the bonuses
+print(f'Цена: {products1.get_products_price()}. {products1.products}')
