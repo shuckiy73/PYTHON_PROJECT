@@ -1,5 +1,4 @@
-# from utils
-import Utils
+from utils import Utils
 from repository import StudentsRepoXlsx
 from test_service import TestService
 

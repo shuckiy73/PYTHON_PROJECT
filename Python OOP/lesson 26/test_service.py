@@ -55,10 +55,13 @@ class TestService:
         to_print = f"{'=' * 80}\n{to_print}\n{'=' * 80}"
         print(to_print)
 
-    def students_menu(self, student, students):
+    def students_menu(self, student, students, student_name):
         chosen_item = input('Выберите пункт меню: ')
         if chosen_item == "1":
             TestService.start_test(student)
+        elif chosen_item == "2":
+            print('Посмотреть свои отметки')
+            self.show_student_info(student_name, students)
         elif chosen_item == "10":
             print('Все данные успешно сохранены')
             self.repo.save_data(students)
