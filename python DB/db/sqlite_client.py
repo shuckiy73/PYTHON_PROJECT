@@ -47,4 +47,4 @@ def sqlite_test():
     conn.close()
 
 
-sqlite_test()
+# sqlite_test()
