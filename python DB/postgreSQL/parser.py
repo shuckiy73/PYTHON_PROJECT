@@ -39,6 +39,12 @@ class Parser:
         for item in mebel_items:
             self.data_client_imp.insert(connection, item[0], item[1], item[2])
 
+    def save_to_postgres(self, mebel_items):
+        connection = self.data_client_imp.get_connection()
+        self.data_client_imp.create_mebel_table(connection)
+        for item in mebel_items:
+            self.data_client_imp.insert(connection, item[0], item[1], item[2])
+
     def run(self):
         mebel_items = []
         for link in Parser.links_to_parse:
