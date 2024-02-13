@@ -1,0 +1,2 @@
+django-admin startproject project_1
+python .\manage.py startapp app_1
