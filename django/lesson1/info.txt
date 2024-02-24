@@ -1,2 +1,6 @@
 django-admin startproject project_1
 python .\manage.py startapp app_1
+python .\manage.py runserver 8000
+
+python .\manage.py makemigrations app_1
+python .\manage.py migrate
